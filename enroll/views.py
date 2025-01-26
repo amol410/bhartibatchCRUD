@@ -17,4 +17,5 @@ def home(request):
         form = Productform()
 
     prod = Product.objects.all()
-    return render(request, "enroll/home.html", {"prod":prod, "form":form})
+    stud = Student.objects.all()
+    return render(request, "enroll/home.html", {"prod":prod, "form":form, "stud":stud})

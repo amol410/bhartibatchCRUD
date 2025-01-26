@@ -59,6 +59,15 @@
         </div>
         {% endfor %}
     </div> 
+    <div class="container">
+        {% for STU in stud %}
+        <div class="product-card">
+            <div class="product-name">{{ STU.name }}</div>
+            <div class="product-desc">{{ STU.age }}</div>
+            <div class="product-price">${{ STU.college_name }}</div>
+        </div>
+        {% endfor %}
+    </div>
     <div>
         <h3>Add a Product</h3>
         <form action="" method="POST">
