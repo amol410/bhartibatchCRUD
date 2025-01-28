@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from .models import Product, Student
 from .forms import Productform
 # Create your views here.
@@ -19,3 +19,24 @@ def home(request):
     prod = Product.objects.all()
     stud = Student.objects.all()
     return render(request, "enroll/home.html", {"prod":prod, "form":form, "stud":stud})
+
+def update(request, id):
+    if request.method == "POST":
+        pi = Product.objects.get(pk=id)
+        fm = Productform(request.POST, instance=pi)
+        if fm.is_valid():
+            fm.save()
+    else:
+        pi = Product.objects.get(pk=id)
+        fm = Productform(instance=pi)
+    return render(request, "enroll/update.html", {"form":fm})
+
+
+def delete(request, id):
+    if request.method == "POST":
+        pi = Product.objects.get(pk=id)
+        pi.delete()
+        return HttpResponseRedirect("/")
+
+
+
