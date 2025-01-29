@@ -111,6 +111,9 @@
                         <h3>{{ pro.name }}</h3>
                         <p>{{ pro.desc }}</p>
                         <p><strong>Price:</strong> ${{ pro.price }}</p>
+                        {% if pro.image %}
+                        <img src="{{ pro.image.url }}" alt="{{ pro.name }}" width="100" height="100">
+            {% endif %}
 
                         <!-- Update Button -->
                         <form action="{% url 'update_data' pro.id %}" method="GET" class="mb-2">
